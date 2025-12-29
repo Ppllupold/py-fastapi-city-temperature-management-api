@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from api.routers.сity import router as city_router
+from api.routers.city import router as city_router
 from api.routers.temperature import router as temperature_router
 
 app = FastAPI()

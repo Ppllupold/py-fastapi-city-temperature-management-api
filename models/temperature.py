@@ -1,6 +1,6 @@
 from datetime import datetime
 
-from sqlalchemy import DateTime
+from sqlalchemy import DateTime, func
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -16,7 +16,7 @@ class Temperature(Base):
     city: Mapped[City] = relationship()
     date_time: Mapped[datetime] = mapped_column(
         DateTime,
-        default=datetime.now(),
+        server_default=func.now(),
         nullable=False,
     )
     temperature: Mapped[int] = mapped_column(nullable=False)

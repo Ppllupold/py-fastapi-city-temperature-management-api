@@ -7,7 +7,7 @@ from services import fetch_temperature_by_city_name
 import models
 
 
-async def update_cites_temperature(db: AsyncSession):
+async def update_cities_temperature(db: AsyncSession):
     result = await db.execute(select(models.City))
     cities = result.scalars().all()
 
@@ -43,8 +43,6 @@ async def get_temperature_for_city(city_id: int, db: AsyncSession):
     result = await db.execute(
         select(models.Temperature)
         .where(models.Temperature.city_id == city_id)
-        .order_by(models.Temperature.date_time.desc())
-        .limit(1)
         .options(selectinload(models.Temperature.city))
     )
     return result.scalar_one_or_none()

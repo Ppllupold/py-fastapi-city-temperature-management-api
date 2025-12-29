@@ -1,8 +1,6 @@
-from sqlalchemy.ext.asyncio import async_session
+from dotenv import load_dotenv
 
 from database import SessionLocal
-
-from dotenv import load_dotenv
 
 load_dotenv()
 

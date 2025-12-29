@@ -7,7 +7,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 OPEN_WEATHER_URL = "https://api.openweathermap.org/data/2.5/weather"
-API_KEY = os.getenv("API_KEY")
+API_KEY = os.getenv("OPENWEATHER_API_KEY")
+if not API_KEY:
+    raise RuntimeError("OPENWEATHER_API_KEY is not set")
+
 
 
 async def fetch_temperature_by_city_name(city_name: str) -> Optional[int]:
