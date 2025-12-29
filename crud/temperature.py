@@ -45,5 +45,5 @@ async def get_temperature_for_city(city_id: int, db: AsyncSession):
         .where(models.Temperature.city_id == city_id)
         .options(selectinload(models.Temperature.city))
     )
-    return result.scalar_one_or_none()
+    return result.scalars().all()
 
